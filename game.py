@@ -7,22 +7,21 @@ import pygame
 class Game:
     
     def __init__(self):
-        self.ship=Ship() #Crear la nave
+        self.ship=Ship() 
         self.bullet=Bullet()
-        self.width=800 #Ancho de la pantalla
-        self.height=800 #Alto de la pantalla
-        self.mySky=Sky(self.width, self.height, 1600) #Crear el cielo
-        self.screen=pygame.display.set_mode((self.width,self.height)) #Crear la pantalla
-        self.clock=pygame.time.Clock() #Crear el reloj para controlar los fps
+        self.width=800 
+        self.height=800 
+        self.mySky=Sky(self.width, self.height, 1600) 
+        self.screen=pygame.display.set_mode((self.width,self.height)) 
+        self.clock=pygame.time.Clock() 
         self.fps=60 
-        self.sprites= pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/sprites.png") #Cargar la hoja de imágenes
-        self.shipsprite=pygame.Surface((64,64)).convert() #Crear una superficie para la nave
-        self.shipsprite.blit(self.sprites,(0,0),(250,436,64,64)) #Cortar la nave de la hoja de imágenes
-        self.bulletsprite = pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/bullet.png").convert() #dibujar la balla
-        self.bulletsprite.set_colorkey(0,0) #quitar el fondo de la bala
+        self.sprites= pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/sprites.png") 
+        self.shipsprite=pygame.Surface((64,64)).convert() 
+        self.shipsprite.blit(self.sprites,(0,0),(250,436,64,64)) 
+        self.bulletsprite = pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/bullet.png").convert() 
+        self.bulletsprite.set_colorkey(0,0) 
         
     def checkKeys(self):
-        #Comprobar las teclas pulsadas
         keys=pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]: self.ship.direction="RIGHT" 
         elif keys[pygame.K_LEFT]: self.ship.direction="LEFT"
@@ -47,25 +46,25 @@ class Game:
                 b=random.randint(0,255)
                 pygame.draw.circle(self.screen, (r,g,b), star, 1)
             
-            #Definir los limites de la pantalla
-            if self.ship.x > self.width-64: self.ship.x=self.width-64 #Limite derecho
-            if self.ship.x < 8: self.ship.x=8 #Limite izquierdo
+            
+            if self.ship.x > self.width-64: self.ship.x=self.width-64 
+            if self.ship.x < 8: self.ship.x=8 
             
             if self.bullet.ybullet > self.height:
                 self.bullet.ybullet =self.ship.y
             
             
-            self.mySky.move() #Mover las estrellas
-            self.ship.move() #Mover la nave
+            self.mySky.move() 
+            self.ship.move() 
             self.bullet.shoot()
-            x=self.ship.x #Posicion x de la nave
-            y=self.ship.y #Posicion y de la nave
-            self.screen.blit(self.shipsprite, (x,y)) #Dibujar la nave
+            x=self.ship.x 
+            y=self.ship.y 
+            self.screen.blit(self.shipsprite, (x,y)) 
             self.screen.blit(self.bulletsprite,(x,self.bullet.ybullet))
-            self.clock.tick(self.fps) #Controlar los fps
-            self.checkKeys() #Comprobar las teclas
-            pygame.display.flip() #Actualizar la pantalla
+            self.clock.tick(self.fps) 
+            self.checkKeys() 
+            pygame.display.flip() 
 
 
-myGame=Game() #Creamos un objeto de la clase Game
-myGame.run() #Ejecutamos el método run del objeto myGame
+myGame=Game() 
+myGame.run() 
