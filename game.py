@@ -15,10 +15,10 @@ class Game:
         self.screen=pygame.display.set_mode((self.width,self.height)) #Crear la pantalla
         self.clock=pygame.time.Clock() #Crear el reloj para controlar los fps
         self.fps=60 
-        self.sprites= pygame.image.load("Matamarcianos/sprites.png") #Cargar la hoja de imágenes
+        self.sprites= pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/sprites.png") #Cargar la hoja de imágenes
         self.shipsprite=pygame.Surface((64,64)).convert() #Crear una superficie para la nave
         self.shipsprite.blit(self.sprites,(0,0),(250,436,64,64)) #Cortar la nave de la hoja de imágenes
-        self.bulletsprite = pygame.image.load("Matamarcianos/bullet.png").convert() #dibujar la balla
+        self.bulletsprite = pygame.image.load(r"C:\Users\MITROLON\Desktop\Udlaga/bullet.png").convert() #dibujar la balla
         self.bulletsprite.set_colorkey(0,0) #quitar el fondo de la bala
         
     def checkKeys(self):
